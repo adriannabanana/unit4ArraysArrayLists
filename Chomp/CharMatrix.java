@@ -28,7 +28,7 @@ public class CharMatrix
         this.grid = new char[rows][cols];
         for(int i = 0; i < this.grid.length; i++)
         {
-            for(int j = 0; j < this.grid[i].length; j++)
+            for(int j = 0; j < this.grid[0].length; j++)
             {
                 this.grid[i][j] = fill;
             }
@@ -38,15 +38,13 @@ public class CharMatrix
     // Returns the number of rows in grid
     public int numRows()
     {
-        int rows = this.grid.length;
-        return rows;
+        return this.grid.length;
     }
 
     // Returns the number of columns in grid
     public int numCols()
     {
-        int cols = this.grid.length;
-        return cols;
+        return this.grid[0].length;
     }
 
     // Returns the character at row, col location
@@ -80,8 +78,13 @@ public class CharMatrix
     // lower right corner of the rectangle.
     public void fillRect(int row0, int col0, int row1, int col1, char fill)
     {
-        
-        
+        for(int i = row0; i <= row1 ; i++)
+        {
+            for(int j = col0; j <= col1; j++)
+            {
+                this.grid[i][j] = 'a';
+            }
+        }
     }
 
     // Fills the given rectangle with SPACE characters.
@@ -89,17 +92,45 @@ public class CharMatrix
     // lower right corner of the rectangle.
     public void clearRect(int row0, int col0, int row1, int col1)
     {
-
+        for(int i = row0; i <= row1 ; i++)
+        {
+            for(int j = col0; j <= col1; j++)
+            {
+                this.grid[i][j] = ' ';
+            }
+        }
     }
 
     // Returns the count of all non-space characters in row 
     public int countInRow(int row)
     {
-     
+        int nonSpace = 0;
+
+        for (int i = 0; i < row; i++)
+        {
+            if (this.grid[row][i] != ' ')
+            {
+                nonSpace ++;
+            }
+        }
+        
+        return nonSpace;
     }
+    
     // Returns the count of all non-space characters in col 
     public int countInCol(int col)
     {
+        int nonSpace = 0;
+
+        for (int i = 0; i < col; i++)
+        {
+            if (this.grid[i][col] != ' ')
+            {
+                nonSpace ++;
+            }
+        }
+        
+        return nonSpace;
 
     }
 }
