@@ -53,14 +53,14 @@ public class PartialArray
         int[] newValues = new int[this.currentSize *2];
         for (int i = 0; i< this.currentSize; i++)
         {
-            newValues[i] = this.value[i];
+            newValues[i] = this.values[i];
         }
-        this.values[posA];
+        this.values = newValues;
     }
     
     public static void main (String[] args)
     {
-        int[] new
+        int[] numbers = new int[10];
     }
 }
 

@@ -10,21 +10,21 @@ public class MedalCount
         {1,0,0},
         {0,1,1},
         {1,1,0},
+        
+    };
+
    
 
     
-    private void printTable()
+    public void printTable()
     {
         for (int i = 0 ; i<counts.length ; i++)
-        {
-            //good
-        }
-        
-        for (int j = 0 ; j<counts[0] ; j++)
-        {
-            System.out.print(counts[i][k] +"\t");
-        
-            Stream.out.println();
+        {                
+            for (int j = 0 ; j<counts[i].length ; j++)
+            {
+                System.out.print(counts[i][j] +"\t");
+            }
+            System.out.println();
         }
     }
 
