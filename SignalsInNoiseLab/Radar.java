@@ -34,15 +34,15 @@ public class Radar
     public Radar(int rows, int cols)
     {
         // initialize the currentScan 2D array and the accumulator 2D array
-        
-        
+        this.currentScan = new boolean[rows][cols];
+        this.accumulator = new int[rows][cols];
         //
         // !!! add code here !!!
         //
         
         
         // randomly set the location of the monster (can be explicity set through the
-        //  setMonsterLocation method for the unit test
+        // setMonsterLocation method for the unit test
         monsterLocationRow = (int)(Math.random() * rows);
         monsterLocationCol = (int)(Math.random() * cols);
         
@@ -63,9 +63,30 @@ public class Radar
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
         //    5. increment the numScans instance variable
         
+        for(int i = 0; i < this.currentScan.length; i++)
+        {
+            for(int j = 0; j < this.currentScan[0].length; j++)
+            {
+                this.currentScan[i][j] = false;
+            }
+        }
         
+        this.currentScan[this.monsterLocationRow][this.monsterLocationCol] = true;
+        
+        injectNoise();
         //
-        // !!! add code here !!!
+        for(int i = 0; i < this.currentScan.length; i++)
+        {
+            for(int j = 0; j < this.currentScan[0].length; j++)
+            {
+                if (this.currentScan[i][j] == true)
+                {
+                    this.accumulator[i][j]++;
+                }
+            }
+        }
+        
+        numScans++;
         //
         
         
@@ -166,6 +187,16 @@ public class Radar
         // detected as a false positive. Use the Math.random method to determine if each cell should be set
         // as a false positive.
         
+        for(int i = 0; i < this.currentScan.length; i++)
+        {
+            for(int j = 0; j < this.currentScan[0].length; j++)
+            {
+                if (Math.random() == this.noiseFraction)
+                {
+                    currentScan[i][j] = true;
+                }
+            }
+        }
         
         //
         // !!! add code here !!!
