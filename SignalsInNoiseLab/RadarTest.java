@@ -16,35 +16,64 @@ public class RadarTest
     @Test 
     public void test1()
     {
-        Radar radar = new Radar(100,100,20,80);
-        radar.scan();
+        Radar radar = new Radar(100,100);
+        radar.setMonsterLocation(20,80);
+        for (int i = 0; i < 100; i++)
+        {
+            radar.scan();
+        }
         
-        if (radar.getAccumulatedDetection(20,80) == radar.getNumScans())
+        int max = radar.getAccumulatedDetection(0,0);
+        int row = 0;
+        int col = 0;
+        
+        for (int i = 0; i < 100; i++)
         {
-            assertNotNull("Monster at (20,80)");
+            for (int j = 0; j < 100; j++)
+            {
+                if (radar.getAccumulatedDetection(i,j) > max)
+                {
+                    max = radar.getAccumulatedDetection(i,j);
+                    row = i;
+                    col = j;
+                }
+            }
         }
-        else
-        {
-            assertNull("Monster expected at (20,80)");
-        }
-
+        
+        assertEquals(20,row);
+        assertEquals(80,col);
         
     }
     
     @Test
     public void test2()
     {
-        Radar radar = new Radar(100,100,50,50);
-        radar.scan();
+        Radar radar = new Radar(100,100);
+        radar.setMonsterLocation(50,50);
+        for (int i = 0; i < 100; i++)
+        {
+            radar.scan();
+        }
         
-        if (radar.getAccumulatedDetection(50,50) == radar.getNumScans())
+        int max = radar.getAccumulatedDetection(0,0);
+        int row = 0;
+        int col = 0;
+        
+        for (int i = 0; i < 100; i++)
         {
-            assertNotNull("Monster at (50,50)");
+            for (int j = 0; j < 100; j++)
+            {
+                if (radar.getAccumulatedDetection(i,j) > max)
+                {
+                    max = radar.getAccumulatedDetection(i,j);
+                    row = i;
+                    col = j;
+                }
+            }
         }
-        else
-        {
-            assertNull("Monster expected at (50,50)");
-        }
+        
+        assertEquals(50,row);
+        assertEquals(50,col);
     }
 
 }

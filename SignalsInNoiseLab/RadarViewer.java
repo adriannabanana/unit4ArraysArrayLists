@@ -25,7 +25,8 @@ public class RadarViewer
         System.out.println("What column do you want the monster to be in? ");
         int col = scan.nextInt();
         
-        Radar radar = new Radar(ROWS,COLS,row,col);
+        Radar radar = new Radar(ROWS,COLS);
+        radar.setMonsterLocation(row,col);
         radar.setNoiseFraction(0.10);
         radar.scan();
         
