@@ -1,10 +1,9 @@
 
-
 /**
- * Write a description of class PersonWithZip here.
+ * PersonWithZip class contains a person's name and zipcode
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Adrianna Fu
+ * @version 12/21/15
  */
 public class PersonWithZip
 {
@@ -22,44 +21,18 @@ public class PersonWithZip
         this.zipCode = zipCode;
     }
     
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public static void main(String[] args)
-    {
-        
-    }
-
-    //returns the zipcode
+    // returns the value of the zip code
     public int getZip()
     {
         return this.zipCode;
     }
     
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
+    //returns a string of all the instance variables with labels
     public String toString()
     {
-        // put your code here
-        return;
-
+        String val = "Name: " + firstName + " " + lastName;
+        val += ("\nZip Code: " + zipCode);
+        return val;
     }
-
+    
 }
