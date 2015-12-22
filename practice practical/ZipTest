@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+/**
+ * Adds people to arrayZips, prints their info, and finds the smallest numbered zip code
+ * 
+ * @author Adrianna Fu
+ * @version 12/21/15
+ */
+public class ZipTest
+{
+    public static void main(String args[])
+    {   
+        // creates an array called arrayZips that contains 3 PersonWithZip objects
+        PersonWithZip[] arrayZips = new PersonWithZip[3];
+        
+        Scanner scan = new Scanner(System.in);
+        // loop that prompts for first name, last name, and zip code. creates an object for 
+        // the array with this info
+        for (int i = 0; i < arrayZips.length; i++)
+        {
+            System.out.print("\nEnter first name for person #" + (i+1) + ": ");
+            String firstName = scan.next();
+            System.out.print("Enter last name for person #" + (i+1) + ": ");
+            String lastName = scan.next();
+            System.out.print("Enter zip code for person #" + (i+1) + ": ");
+            int zipCode = scan.nextInt();
+            arrayZips[i] = new PersonWithZip(firstName,lastName,zipCode);
+        }
+        
+        System.out.println();
+        // prints out each PersonWithZip object
+        for (PersonWithZip person : arrayZips)
+        {
+            System.out.println(person);
+        }
+        
+        // finds the person with the least numbered zip code and prints out their info
+        System.out.println("\nThe following person has the least numbered zip code: ");
+        int smallestZip = arrayZips[0].getZip();
+        int smallestZipIndex = 0;
+        for (int r = 1; r < arrayZips.length; r++)
+        {
+            if (arrayZips[r].getZip() < smallestZip)
+            {
+                smallestZip = arrayZips[r].getZip();
+                smallestZipIndex = r;
+            }
+        }
+        System.out.print(arrayZips[smallestZipIndex].toString());
+        
+    }
+}
